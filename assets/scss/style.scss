@@ -1,0 +1,579 @@
+@import 'helpers/reset', 'helpers/variables', 'helpers/mixins', 'helpers/grid', 'helpers/fonts', 'helpers/typography', 'helpers/animations';
+@import 'common', 'form';
+
+// Base
+
+html,
+body {
+    color: $color-body;
+    font-family: $font-body;
+
+    @include box-sizing(border-box);
+    @include font-smoothing;
+}
+
+html {
+    min-width: 320px;
+    height: 100%;
+
+    padding: $width-gutter;
+
+    background-color: $color-white;
+
+    &:after {
+        content: '';
+        position: fixed;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+        bottom: 0;
+
+        width: $width-gutter;
+
+        background-color: $color-white;
+    }
+}
+
+body {
+    min-width: 320px;
+    min-height: 100%;
+    right: 0;
+    left: 0;
+
+    position: relative;
+
+	@include transition(all 0.5s ease);
+
+    &.is-active {
+    	right: -$width-menu;
+    	left: $width-menu;
+
+        overflow: hidden;
+    	@include transition(all 0.5s ease);
+
+        .menu {
+    		left: 0;
+            @include transition(all 0.5s ease);
+    	}
+
+        .burger {
+            .icon-burger {
+                @include burger-to-cross(3px, 3px);
+            }
+        }
+
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: fixed;
+
+        right: 0;
+        left: 0;
+
+        height: $width-gutter;
+
+        background-color: $color-white;
+    }
+
+    &:before {
+        top: 0;
+        bottom: auto;
+    }
+    &:after {
+        top: auto;
+        bottom: 0;
+    }
+
+    .site {
+        display: table;
+        width: 100%;
+        height: calc(100vh - 48px);
+
+        background-attachment: fixed;
+        background-image: url('../images/pattern-geo.svg');
+        background-color: $color-md-green;
+        background-repeat: repeat;
+        background-position: center;
+
+        color: $color-white;
+
+        > .main {
+            display: table-cell;
+            vertical-align: middle;
+
+            padding: $width-gutter*5 $width-gutter/2 $width-gutter*2 $width-gutter/2;
+        }
+    }
+
+}
+
+header {
+    position: fixed;
+
+    top:0;
+    right:0;
+    bottom: auto;
+    left: 0;
+
+    width: 100%;
+    min-width: 320px;
+
+    padding: $width-gutter;
+
+    background-color: $color-white;
+
+    z-index: 9;
+
+    @include box-sizing(border-box);
+
+    .logo {
+        display: inline-block;
+
+        padding: $width-gutter/2 $width-gutter/1.5;
+
+        background-color: $color-md-green;
+        color: $color-white;
+
+        font-family: $font-header;
+        font-weight: 700;
+
+        letter-spacing: 0.05em;
+        line-height: 1;
+
+        text-decoration: none;
+        text-transform: uppercase;
+
+        @include transition(all 0.5s ease);
+
+        &:hover {
+            background-color: $color-dk-green;
+
+            @include transition(all 0.5s ease);
+        }
+    }
+
+    .menu-button,
+    .heart-menu-button {
+        position: relative;
+        display: table;
+
+        width: 40px;
+        height: 40px;
+
+        background-color: $color-md-green;
+
+        text-decoration: none;
+
+        @include border-radius(50%);
+
+        .burger,
+        .icon-heart {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .burger {
+            .icon-burger {
+                @include burger(24px, 2px, 4px, $color-white, 0, 0.3s);
+            }
+        }
+
+        .icon-heart {
+            color: $color-white;
+
+            font-size: 140%;
+            text-align: center;
+        }
+
+        &:hover {
+            background-color: $color-dk-green;
+
+            @include transition(all 0.5s ease);
+        }
+    }
+
+    .heart-menu-button {
+        &.is-active {
+            @include rotate(-90deg);
+        }
+    }
+
+    .menu {
+
+        position: fixed;
+    	top: 88px;
+    	right: auto;
+    	bottom: auto;
+    	left: -$width-menu;
+
+    	width: $width-menu;
+        min-height: calc(100vh - 88px);
+
+    	padding: 0 $width-gutter 70px $width-gutter;
+
+    	background-color: $color-white;
+        color: $color-md-green;
+
+    	overflow-y: scroll;
+    	-webkit-overflow-scrolling: touch;
+
+    	z-index: 5;
+
+        @include box-sizing(border-box);
+        @include transition(all 0.5s ease);
+
+        ul {
+    		margin: 0;
+    		padding: 0;
+
+    		li {
+    			margin: $width-gutter auto;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+    			a {
+                    color: $color-md-green;
+
+                    font-size: $font-size-header-small;
+                    font-weight: 400;
+
+                    text-decoration: none;
+
+                    &:hover,
+                    &.active {
+                        color: $color-dk-green;
+                    }
+                }
+    		}
+    	}
+
+        .copyright {
+            position: absolute;
+            bottom: $width-gutter + 4;
+
+            @media screen and (max-height: 480px) {
+                display: none; 
+            }
+
+            p {
+                font-size: $font-size-body-xxsmall;
+                line-height: 1.5;
+                a {
+                    color: $color-dk-green;
+                    border-bottom: 1px solid $color-dk-green;
+
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .heart-menu {
+
+        float: right;
+
+        margin-top: $width-gutter/2;
+        margin-bottom: -$width-gutter/2;
+
+        clear: both;
+
+        @media #{$small-only} {
+            position: absolute;
+
+            top: 40px;
+            right: -1px;
+            bottom: auto;
+            left: -1px;
+
+            border: 1px solid $color-white;
+            border-bottom: 10px solid $color-white;
+
+            ul {
+                width: 100% !important;
+                height: 0;
+                @include transition(height 0.5s ease);
+
+                > li  {
+                   width: 20% !important;
+               }
+            }
+
+            &.is-active {
+                ul {
+                    height: 40px;
+                    @include transition(height 0.5s ease);
+                }
+            }
+        }
+
+        @media #{$medium-up} {
+            width: 0%;
+            height: 40px;
+
+            margin-top: 0;
+            margin-right: $width-gutter/2;
+
+            clear: none;
+
+            @include transition(width 0.5s ease);
+
+            &.is-active {
+                 width: calc(100% - 52px);
+                 @include transition(width 0.5s ease);
+            }
+        }
+
+        overflow: hidden;
+
+         &.is-active {
+             margin-bottom: 0;
+
+             ul > li {
+             }
+         }
+
+         ul {
+
+             width: 200px;
+             font-size: 0;
+
+             > li {
+
+                 display: inline-block;
+
+                 width: 40px;
+                 line-height: 40px;
+
+                 margin: 0;
+
+                 text-align: center;
+                 background-color: $color-md-green;
+
+                 @include transition(background-color 0.5s ease, opacity 0.5s ease);
+
+                 &:hover {
+                     @include transition(background-color 0.5s ease, opacity 0.5s ease);
+                 }
+
+                 > a {
+                     display: block;
+
+                     color: $color-white;
+                 }
+
+                 &.behance {
+                     background-color: $color-behance;
+                     &:hover {
+                         background-color: darken($color-behance, 10%);
+                     }
+                 }
+
+                 &.instagram {
+                    background:
+                    /////// Use radial gradients to get the rounded
+                    /////// gradient effect in each corner
+
+                    // left bottom
+                    radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+                    radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+                    // left top
+                    radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+                    radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+                    //  right top
+                    radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+                    radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+                    // right bottom
+                    radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+
+                    /////// create a base coat to smooth
+                    /////// corner gradients
+                    linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+                    background-color: $color-instagram;
+                    &:hover {
+                        opacity: .9;
+                        // background-color: darken($color-instagram, 10%);
+                    }
+                 }
+
+                 &.dribbble {
+                     background-color: $color-dribbble;
+                     &:hover {
+                         background-color: darken($color-dribbble, 10%);
+                     }
+                 }
+
+                 &.github {
+                     background-color: $color-github;
+                     &:hover {
+                         background-color: lighten($color-github, 10%);
+                     }
+                 }
+
+                 &.linkedin {
+                     background-color: $color-linkedin;
+                     &:hover {
+                         background-color: darken($color-linkedin, 10%);
+                     }
+                 }
+
+                 &.paper-plane {
+                     background-color: $color-md-green;
+                     &:hover {
+                         background-color: darken($color-md-green, 10%);
+                     }
+                 }
+             }
+         }
+
+    }
+
+}
+
+.bio-image {
+    max-width: 230px;
+    margin: 0 auto;
+
+    border: 4px solid $color-white;
+    background-color: rgba($color-dk-green, .5);
+
+    cursor: pointer;
+    overflow: hidden;
+
+    @include border-radius(50%);
+
+    > div {
+        position: relative;
+        padding: 20%;
+
+        background-image: url('../images/logo-rk.png');
+        background-origin: content-box;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        @media #{$medium-up} {
+
+            &:before,
+            &:after {
+                content: '';
+
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                @include border-radius(50%);
+
+                opacity: 0;
+
+                @include transition(all 0.2s ease);
+            }
+
+            &:before {
+                background-image: url('../images/portrait.jpg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            &:after {
+                background-image: url('../images/portrait-alt.jpg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            &:hover {
+                &:before {
+                    opacity: 1;
+
+                    @include transition(all 0.2s ease);
+                }
+            }
+
+            &:active,
+            &:focus {
+                &:before {
+                    opacity: 0;
+                }
+                &:after {
+                    opacity: 1;
+                    @include transition(all 0.2s ease);
+                }
+            }
+
+        }
+    }
+}
+
+.projects {
+	margin-top: $width-gutter;
+	.project-item {
+		margin: 0;
+		.project-image {
+			position:            relative;
+			border:              4px solid $color-white;
+			background-size:     cover;
+			background-position: center;
+			.project-overlay {
+				opacity:             0;
+
+				position:            absolute;
+				top:                 0;
+				right:               0;
+				bottom:              0;
+				left:                0;
+
+                background-color: rgba($color-dk-green, .5);
+
+                @extend .icon-font;
+                @extend .icon-heart;
+
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -45px;
+
+                    left: 50%;
+                    margin-left: -50px;
+
+                    width: 100px;
+                    line-height: 100px;
+
+                    color: $color-white;
+
+                    font-size: 64px;
+                    text-align: center;
+                }
+			}
+		}
+		&:hover {
+			.project-image {
+				.project-overlay {
+					opacity: 1;
+					@include transition(all, ease, 0.2s);
+				}
+			}
+		}
+		&.project-collaboration {
+			.project-image {
+				.project-overlay {
+                    @extend .icon-user-add;
+				}
+			}
+		}
+		.project-gallery {
+			&.gallery-item {
+				display: none;
+			}
+		}
+	}
+}
+
+@import 'plugins/fancybox';
