@@ -1,5 +1,5 @@
-@import 'helpers/reset', 'helpers/variables', 'helpers/mixins', 'helpers/grid', 'helpers/fonts', 'helpers/typography', 'helpers/animations';
-@import 'common', 'form';
+@import 'helpers/variables', 'helpers/reset', 'helpers/mixins', 'helpers/grid', 'helpers/fonts', 'helpers/typography', 'helpers/animations';
+@import 'common';
 
 // Base
 
@@ -43,19 +43,19 @@ body {
 
     position: relative;
 
-	@include transition(all 0.5s ease);
+    @include transition(all 0.5s ease);
 
     &.is-active {
-    	right: -$width-menu;
-    	left: $width-menu;
+        right: -$width-menu;
+        left: $width-menu;
 
         overflow: hidden;
-    	@include transition(all 0.5s ease);
+        @include transition(all 0.5s ease);
 
         .menu {
-    		left: 0;
+            left: 0;
             @include transition(all 0.5s ease);
-    	}
+        }
 
         .burger {
             .icon-burger {
@@ -82,6 +82,7 @@ body {
         top: 0;
         bottom: auto;
     }
+
     &:after {
         top: auto;
         bottom: 0;
@@ -100,11 +101,11 @@ body {
 
         color: $color-white;
 
-        > .main {
+        >.main {
             display: table-cell;
             vertical-align: middle;
 
-            padding: $width-gutter*5 $width-gutter/2 $width-gutter*2 $width-gutter/2;
+            padding: $width-gutter*5 calc($width-gutter/2) $width-gutter*2 calc($width-gutter/2);
         }
     }
 
@@ -113,8 +114,8 @@ body {
 header {
     position: fixed;
 
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
     bottom: auto;
     left: 0;
 
@@ -132,7 +133,7 @@ header {
     .logo {
         display: inline-block;
 
-        padding: $width-gutter/2 $width-gutter/1.5;
+        padding: calc($width-gutter/2) calc($width-gutter/1.5);
 
         background-color: $color-md-green;
         color: $color-white;
@@ -204,39 +205,39 @@ header {
     .menu {
 
         position: fixed;
-    	top: 88px;
-    	right: auto;
-    	bottom: auto;
-    	left: -$width-menu;
+        top: 88px;
+        right: auto;
+        bottom: auto;
+        left: -$width-menu;
 
-    	width: $width-menu;
+        width: $width-menu;
         min-height: calc(100vh - 88px);
 
-    	padding: 0 $width-gutter 70px $width-gutter;
+        padding: 0 $width-gutter 70px $width-gutter;
 
-    	background-color: $color-white;
+        background-color: $color-white;
         color: $color-md-green;
 
-    	overflow-y: scroll;
-    	-webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
 
-    	z-index: 5;
+        z-index: 5;
 
         @include box-sizing(border-box);
         @include transition(all 0.5s ease);
 
         ul {
-    		margin: 0;
-    		padding: 0;
+            margin: 0;
+            padding: 0;
 
-    		li {
-    			margin: $width-gutter auto;
+            li {
+                margin: $width-gutter auto;
 
                 &:first-child {
                     margin-top: 0;
                 }
 
-    			a {
+                a {
                     color: $color-md-green;
 
                     font-size: $font-size-header-small;
@@ -249,20 +250,21 @@ header {
                         color: $color-dk-green;
                     }
                 }
-    		}
-    	}
+            }
+        }
 
         .copyright {
             position: absolute;
             bottom: $width-gutter + 4;
 
             @media screen and (max-height: 480px) {
-                display: none; 
+                display: none;
             }
 
             p {
                 font-size: $font-size-body-xxsmall;
                 line-height: 1.5;
+
                 a {
                     color: $color-dk-green;
                     border-bottom: 1px solid $color-dk-green;
@@ -277,8 +279,8 @@ header {
 
         float: right;
 
-        margin-top: $width-gutter/2;
-        margin-bottom: -$width-gutter/2;
+        margin-top: calc($width-gutter/2);
+        margin-bottom: -1 * calc($width-gutter/2);
 
         clear: both;
 
@@ -298,9 +300,9 @@ header {
                 height: 0;
                 @include transition(height 0.5s ease);
 
-                > li  {
-                   width: 20% !important;
-               }
+                >li {
+                    width: 20% !important;
+                }
             }
 
             &.is-active {
@@ -316,264 +318,123 @@ header {
             height: 40px;
 
             margin-top: 0;
-            margin-right: $width-gutter/2;
+            margin-right: calc($width-gutter/2);
 
             clear: none;
 
             @include transition(width 0.5s ease);
 
             &.is-active {
-                 width: calc(100% - 52px);
-                 @include transition(width 0.5s ease);
+                width: calc(100% - 52px);
+                @include transition(width 0.5s ease);
             }
         }
 
         overflow: hidden;
 
-         &.is-active {
-             margin-bottom: 0;
+        &.is-active {
+            margin-bottom: 0;
+        }
 
-             ul > li {
-             }
-         }
+        ul {
 
-         ul {
+            width: 200px;
+            font-size: 0;
 
-             width: 200px;
-             font-size: 0;
+            >li {
 
-             > li {
+                display: inline-block;
 
-                 display: inline-block;
+                width: 40px;
+                line-height: 40px;
 
-                 width: 40px;
-                 line-height: 40px;
+                margin: 0;
 
-                 margin: 0;
+                text-align: center;
+                background-color: $color-md-green;
 
-                 text-align: center;
-                 background-color: $color-md-green;
+                @include transition(background-color 0.5s ease, opacity 0.5s ease);
 
-                 @include transition(background-color 0.5s ease, opacity 0.5s ease);
+                &:hover {
+                    @include transition(background-color 0.5s ease, opacity 0.5s ease);
+                }
 
-                 &:hover {
-                     @include transition(background-color 0.5s ease, opacity 0.5s ease);
-                 }
+                >a {
+                    display: block;
 
-                 > a {
-                     display: block;
+                    color: $color-white;
+                }
 
-                     color: $color-white;
-                 }
+                &.behance {
+                    background-color: $color-behance;
 
-                 &.behance {
-                     background-color: $color-behance;
-                     &:hover {
-                         background-color: darken($color-behance, 10%);
-                     }
-                 }
+                    &:hover {
+                        background-color: darken($color-behance, 10%);
+                    }
+                }
 
-                 &.instagram {
+                &.instagram {
                     background:
-                    /////// Use radial gradients to get the rounded
-                    /////// gradient effect in each corner
+                        /////// Use radial gradients to get the rounded
+                        /////// gradient effect in each corner
 
-                    // left bottom
-                    radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
-                    radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
-                    // left top
-                    radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
-                    radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
-                    //  right top
-                    radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
-                    radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
-                    // right bottom
-                    radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+                        // left bottom
+                        radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+                        radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+                        // left top
+                        radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+                        radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+                        //  right top
+                        radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+                        radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+                        // right bottom
+                        radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
 
-                    /////// create a base coat to smooth
-                    /////// corner gradients
-                    linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+                        /////// create a base coat to smooth
+                        /////// corner gradients
+                        linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
                     background-color: $color-instagram;
+
                     &:hover {
                         opacity: .9;
                         // background-color: darken($color-instagram, 10%);
                     }
-                 }
+                }
 
-                 &.dribbble {
-                     background-color: $color-dribbble;
-                     &:hover {
-                         background-color: darken($color-dribbble, 10%);
-                     }
-                 }
+                &.dribbble {
+                    background-color: $color-dribbble;
 
-                 &.github {
-                     background-color: $color-github;
-                     &:hover {
-                         background-color: lighten($color-github, 10%);
-                     }
-                 }
+                    &:hover {
+                        background-color: darken($color-dribbble, 10%);
+                    }
+                }
 
-                 &.linkedin {
-                     background-color: $color-linkedin;
-                     &:hover {
-                         background-color: darken($color-linkedin, 10%);
-                     }
-                 }
+                &.github {
+                    background-color: $color-github;
 
-                 &.paper-plane {
-                     background-color: $color-md-green;
-                     &:hover {
-                         background-color: darken($color-md-green, 10%);
-                     }
-                 }
-             }
-         }
+                    &:hover {
+                        background-color: lighten($color-github, 10%);
+                    }
+                }
 
-    }
+                &.linkedin {
+                    background-color: $color-linkedin;
 
-}
+                    &:hover {
+                        background-color: darken($color-linkedin, 10%);
+                    }
+                }
 
-.bio-image {
-    max-width: 230px;
-    margin: 0 auto;
+                &.paper-plane {
+                    background-color: $color-md-green;
 
-    border: 4px solid $color-white;
-    background-color: rgba($color-dk-green, .5);
-
-    cursor: pointer;
-    overflow: hidden;
-
-    @include border-radius(50%);
-
-    > div {
-        position: relative;
-        padding: 20%;
-
-        background-image: url('../images/logo-rk.png');
-        background-origin: content-box;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-
-        @media #{$medium-up} {
-
-            &:before,
-            &:after {
-                content: '';
-
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-
-                @include border-radius(50%);
-
-                opacity: 0;
-
-                @include transition(all 0.2s ease);
-            }
-
-            &:before {
-                background-image: url('../images/portrait.jpg');
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-
-            &:after {
-                background-image: url('../images/portrait-alt.jpg');
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-
-            &:hover {
-                &:before {
-                    opacity: 1;
-
-                    @include transition(all 0.2s ease);
+                    &:hover {
+                        background-color: darken($color-md-green, 10%);
+                    }
                 }
             }
-
-            &:active,
-            &:focus {
-                &:before {
-                    opacity: 0;
-                }
-                &:after {
-                    opacity: 1;
-                    @include transition(all 0.2s ease);
-                }
-            }
-
         }
+
     }
+
 }
-
-.projects {
-	margin-top: $width-gutter;
-	.project-item {
-		margin: 0;
-		.project-image {
-			position:            relative;
-			border:              4px solid $color-white;
-			background-size:     cover;
-			background-position: center;
-			.project-overlay {
-				opacity:             0;
-
-				position:            absolute;
-				top:                 0;
-				right:               0;
-				bottom:              0;
-				left:                0;
-
-                background-color: rgba($color-dk-green, .5);
-
-                @extend .icon-font;
-                @extend .icon-heart;
-
-                &:before {
-                    position: absolute;
-                    top: 50%;
-                    margin-top: -45px;
-
-                    left: 50%;
-                    margin-left: -50px;
-
-                    width: 100px;
-                    line-height: 100px;
-
-                    color: $color-white;
-
-                    font-size: 64px;
-                    text-align: center;
-                }
-			}
-		}
-		&:hover {
-			.project-image {
-				.project-overlay {
-					opacity: 1;
-					@include transition(all, ease, 0.2s);
-				}
-			}
-		}
-		&.project-collaboration {
-			.project-image {
-				.project-overlay {
-                    @extend .icon-user-add;
-				}
-			}
-		}
-		.project-gallery {
-			&.gallery-item {
-				display: none;
-			}
-		}
-	}
-}
-
-@import 'plugins/fancybox';
