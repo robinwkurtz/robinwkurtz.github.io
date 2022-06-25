@@ -3,6 +3,8 @@
 My skillset includes a wide variety of levels and disciplines. The following are the areas in which
 I've touched on over the years.
 
+Check out my <a href="http://www.linkedin.com/pub/robin-kurtz/4b/a93/238" target="_blank" rel="noopener noreferrer">LinkedIn</a> profile, for more information.
+
 **Development Languages & Processes** — **CSS[3]**, **SCSS**, **HTML[5]**, **JavaScript**, jQuery,
 NodeJs, **PHP**, **React**, Liquid, **Yarn**/NPM, Webpack, Gulp, **Git for version control**, etc.
 

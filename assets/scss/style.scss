@@ -95,7 +95,7 @@ body {
 
         background-attachment: fixed;
         background-image: url('../images/pattern-geo.svg');
-        background-color: $color-md-green;
+        background-color: $color-md-main;
         background-repeat: repeat;
         background-position: center;
 
@@ -135,7 +135,7 @@ header {
 
         padding: calc($width-gutter/2) calc($width-gutter/1.5);
 
-        background-color: $color-md-green;
+        background-color: $color-md-main;
         color: $color-white;
 
         font-family: $font-header;
@@ -150,7 +150,7 @@ header {
         @include transition(all 0.5s ease);
 
         &:hover {
-            background-color: $color-dk-green;
+            background-color: $color-dk-main;
 
             @include transition(all 0.5s ease);
         }
@@ -164,7 +164,7 @@ header {
         width: 40px;
         height: 40px;
 
-        background-color: $color-md-green;
+        background-color: $color-md-main;
 
         text-decoration: none;
 
@@ -190,7 +190,7 @@ header {
         }
 
         &:hover {
-            background-color: $color-dk-green;
+            background-color: $color-dk-main;
 
             @include transition(all 0.5s ease);
         }
@@ -216,7 +216,7 @@ header {
         padding: 0 $width-gutter 70px $width-gutter;
 
         background-color: $color-white;
-        color: $color-md-green;
+        color: $color-md-main;
 
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
@@ -238,7 +238,7 @@ header {
                 }
 
                 a {
-                    color: $color-md-green;
+                    color: $color-md-main;
 
                     font-size: $font-size-header-small;
                     font-weight: 400;
@@ -247,7 +247,7 @@ header {
 
                     &:hover,
                     &.active {
-                        color: $color-dk-green;
+                        color: $color-dk-main;
                     }
                 }
             }
@@ -266,8 +266,8 @@ header {
                 line-height: 1.5;
 
                 a {
-                    color: $color-dk-green;
-                    border-bottom: 1px solid $color-dk-green;
+                    color: $color-dk-main;
+                    border-bottom: 1px solid $color-dk-main;
 
                     text-decoration: none;
                 }
@@ -351,7 +351,7 @@ header {
                 margin: 0;
 
                 text-align: center;
-                background-color: $color-md-green;
+                background-color: $color-md-main;
 
                 @include transition(background-color 0.5s ease, opacity 0.5s ease);
 
@@ -397,7 +397,6 @@ header {
 
                     &:hover {
                         opacity: .9;
-                        // background-color: darken($color-instagram, 10%);
                     }
                 }
 
@@ -426,10 +425,10 @@ header {
                 }
 
                 &.paper-plane {
-                    background-color: $color-md-green;
+                    background-color: $color-md-main;
 
                     &:hover {
-                        background-color: darken($color-md-green, 10%);
+                        background-color: $color-dk-main;
                     }
                 }
             }

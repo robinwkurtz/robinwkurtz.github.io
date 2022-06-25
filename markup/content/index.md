@@ -1,3 +1,5 @@
-# Welcome to my website! I invite you to (link: /about text: learn) more about me, or take a look at (link: /my-work text: my work).
+# Welcome to my website!
 
-# Or visit my (link: http://www.behance.net/robinwkurtz text: Behance popup: yes) portfolio  or my (link: http://www.linkedin.com/pub/robin-kurtz/4b/a93/238 text: LinkedIn popup: yes) for another perspective.
+## I invite you to learn more [about](./about.html) me. 
+
+## Or visit my <a href="http://www.behance.net/robinwkurtz" target="_blank" rel="noopener noreferrer">Behance</a> portfolio or my <a href="http://www.linkedin.com/pub/robin-kurtz/4b/a93/238" target="_blank" rel="noopener noreferrer">LinkedIn</a> for another perspective.

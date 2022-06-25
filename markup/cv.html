@@ -1,20 +1,18 @@
 <!doctype html>
 <html lang="en">
 
-@@include('../partials/head.html')
+@@include('../partials/head.html', {
+title: 'Curriculum Vitae',
+description: 'An overview of my varying skill-set as a full-stack developer'
+})
 
 <body>
-
     <div class="site">
-
         @@include('../partials/header.html')
-
         <main class="main" role="main">
             <div class="row">
                 <div class="column content">
-
-                    @@include('./content/cv.compiled.html')
-
+                    @@include('./compiled/cv.compiled.html')
                 </div>
             </div>
         </main>

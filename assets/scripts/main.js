@@ -10,7 +10,6 @@ $(document).ready(function () {
             }, 150);
         });
     });
-
     // Heart Menu
     $('.js-heart-menu-button').on('click touchstart', function (event) {
         event.preventDefault();

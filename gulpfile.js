@@ -12,8 +12,6 @@ const markdown = require('gulp-markdown')
 
 const notice = '/**\n* This is compiled code, see readme in root directory for more details.\n*/\n\n';
 
-const root = __dirname;
-
 // html
 const html = series(content, markup)
 
@@ -24,7 +22,7 @@ function content() {
         .pipe(rename(function (path) {
             path.basename = path.basename + ".compiled";
         }))
-        .pipe(dest('./markup/content/'))
+        .pipe(dest('./markup/compiled/'))
 }
 
 // markup
@@ -70,7 +68,7 @@ function scripts() {
 // Watch files
 function watchFiles() {
     // Watch template changes    
-    watch(['./markup/content/*.md', './markup/*.html', './partials/*.html'], html)
+    watch(['./markup/content/*.md', './markup/*.html', './partials/*.html'], series(content, markup))
     // Watch style changes    
     watch(['./assets/scss/**/*.scss', './scss/*.scss'], parallel(styles))
     // Watch script changes    
