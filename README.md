@@ -9,12 +9,12 @@ Welcome to my personal website!
 - javascript
 
 With the help of:
-- gulp*
+- gulp[1]
 - markdown
 - scss
 
 
-* With gulp, we use various packages such as:
+[1]: **With gulp, we use various packages such as:**
 - [gulp-file-include](https://github.com/haoxins/gulp-file-include)
 - [gulp-markdown](https://github.com/sindresorhus/gulp-markdown)
 
